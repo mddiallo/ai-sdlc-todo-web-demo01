@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fb">
+    <title>Todo list</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./modules/app.js"></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="app-header">
+        <p class="eyebrow">A little more focus</p>
+        <h1>Todo list</h1>
+        <p class="intro">Keep track of what you want to get done.</p>
+      </header>
+
+      <section class="panel" aria-labelledby="add-heading">
+        <h2 id="add-heading">Add a task</h2>
+        <form id="task-form" novalidate>
+          <label for="task-title">Task</label>
+          <div class="entry-row">
+            <input id="task-title" name="title" type="text" maxlength="500"
+              autocomplete="off" aria-describedby="title-error" required>
+            <button type="submit">Add task</button>
+          </div>
+          <p id="title-error" class="field-error" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="panel task-panel" aria-labelledby="tasks-heading">
+        <div class="list-heading">
+          <h2 id="tasks-heading">Your tasks</h2>
+          <span id="task-count" class="task-count"></span>
+        </div>
+        <div class="filters" role="group" aria-label="Filter tasks">
+          <button type="button" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-filter="open" aria-pressed="false">Open</button>
+          <button type="button" data-filter="completed" aria-pressed="false">Completed</button>
+        </div>
+        <p id="storage-error" class="storage-error" role="alert" hidden></p>
+        <ul id="task-list" class="task-list" aria-live="polite"></ul>
+        <p id="empty-message" class="empty-message">No tasks yet. Add one above to get started.</p>
+      </section>
+
+      <footer>
+        <p>Your tasks stay in this browser only. Browser storage can be cleared and is not a backup.</p>
+      </footer>
+    </main>
+  </body>
+</html>
