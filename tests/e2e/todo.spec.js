@@ -23,7 +23,7 @@ test("creates, completes, reopens, and filters tasks", async ({ page }) => {
   await expect(page.getByText("No tasks match this filter.")).toBeVisible();
   await page.getByRole("button", { name: "Completed" }).click();
   await expect(page.getByText("Prepare demo")).toBeVisible();
-  await page.getByRole("checkbox", { name: 'Mark "Prepare demo" open' }).uncheck();
+  await page.locator(".task-item input[type=checkbox]").click();
   await page.getByRole("button", { name: "All", exact: true }).click();
   await expect(page.getByRole("checkbox", { name: 'Mark "Prepare demo" complete' })).not.toBeChecked();
 });

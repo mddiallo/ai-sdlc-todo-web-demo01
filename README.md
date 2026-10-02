@@ -29,8 +29,9 @@ npm test
 
 `npm test` runs Node's built-in unit test runner and Playwright browser tests.
 The Playwright configuration starts a local test server automatically and
-writes its HTML report and failure screenshots to `test-results/`. CI installs
-Chromium's system dependencies and uploads these results as an artifact.
+writes its HTML report to `playwright-report/` and failure screenshots to
+`playwright-results/`. CI installs Chromium's system dependencies and uploads
+these results as an artifact.
 
 ## Scope and validation
 
@@ -43,8 +44,7 @@ text.
 Validation outcomes for the submitted change:
 
 - `npm ci` — passed.
-- `npm run test:unit` — pending.
-- `npm run test:e2e` — pending.
+- `npm test` — passed: 4 unit tests and 7 Chromium browser tests.
 
 The CI workflow runs both test suites on pull requests and pushes to `main`.
 This change does not deploy the website.
