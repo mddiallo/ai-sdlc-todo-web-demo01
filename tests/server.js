@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { extname, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const siteRoot = fileURLToPath(new URL("../site01/", import.meta.url));
+const siteRoot = resolve(fileURLToPath(new URL("../site01/", import.meta.url)));
 const contentTypes = {
   ".css": "text/css; charset=utf-8",
   ".html": "text/html; charset=utf-8",

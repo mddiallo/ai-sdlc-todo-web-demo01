@@ -115,6 +115,7 @@ filterButtons.forEach((button) => {
 });
 
 if (storageCorrupted) {
+  showStorageError("Saved tasks could not be read. Clear this site's browser storage to start a new list.");
   form.querySelector("button").disabled = true;
   titleInput.disabled = true;
 }

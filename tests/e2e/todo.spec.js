@@ -16,7 +16,7 @@ test("creates, completes, reopens, and filters tasks", async ({ page }) => {
   await page.getByRole("button", { name: "Add task" }).click();
 
   await expect(page.getByText("Prepare demo")).toBeVisible();
-  await page.getByRole("checkbox", { name: 'Mark "Prepare demo" complete' }).check();
+  await page.locator(".task-item input[type=checkbox]").check();
   await expect(page.getByRole("checkbox", { name: 'Mark "Prepare demo" open' })).toBeChecked();
 
   await page.getByRole("button", { name: "Open", exact: true }).click();
@@ -26,6 +26,15 @@ test("creates, completes, reopens, and filters tasks", async ({ page }) => {
   await page.getByRole("checkbox", { name: 'Mark "Prepare demo" open' }).uncheck();
   await page.getByRole("button", { name: "All", exact: true }).click();
   await expect(page.getByRole("checkbox", { name: 'Mark "Prepare demo" complete' })).not.toBeChecked();
+});
+
+test("supports adding a task with the keyboard", async ({ page }) => {
+  await page.goto("/");
+  const titleInput = page.getByRole("textbox", { name: "Task" });
+  await titleInput.focus();
+  await titleInput.fill("Keyboard task");
+  await titleInput.press("Enter");
+  await expect(page.getByText("Keyboard task")).toBeVisible();
 });
 
 test("restores tasks from browser storage after reload", async ({ page }) => {
